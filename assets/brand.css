@@ -1,0 +1,72 @@
+:root{
+  --brand-primary:#00A457;
+  --brand-dark:#1F2937;
+  --brand-muted:#6B7280;
+  --brand-bg:#F8FAFC;
+  --brand-white:#FFFFFF;
+  --brand-accent:#EAB308;
+  --maxw: 1120px;
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  color:var(--brand-dark);
+  background:var(--brand-bg);
+  line-height:1.6;
+}
+.container{max-width:var(--maxw); margin:0 auto; padding:24px;}
+.header{padding:24px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--brand-dark)}
+.brand__logo{width:36px;height:36px;border-radius:50%;background:var(--brand-primary)}
+.brand__name{font-weight:700;font-size:18px;letter-spacing:.2px}
+
+.hero{
+  background:var(--brand-white);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:32px;
+  display:grid; gap:12px;
+}
+.hero h1{margin:0 0 4px;font-size:34px;line-height:1.15}
+.hero p.sub{color:var(--brand-muted); margin:0}
+.badges{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.badge{background:#F3F4F6;color:#111827;border-radius:999px;padding:6px 10px;font-size:12px}
+
+.cta{
+  display:flex;gap:12px;flex-wrap:wrap;margin-top:12px
+}
+.btn{
+  appearance:none;border:0;border-radius:10px;padding:12px 16px;
+  font-weight:600;cursor:pointer;text-decoration:none;display:inline-block
+}
+.btn--primary{background:var(--brand-primary);color:#fff}
+.btn--ghost{background:#ECFDF5;color:#065F46}
+.section{margin:36px 0}
+.section h2{margin:0 0 8px;font-size:26px}
+.cardgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{
+  background:var(--brand-white);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px
+}
+.list{margin:0;padding-left:18px}
+.kicker{font-size:13px;color:var(--brand-muted);text-transform:uppercase;letter-spacing:.12em}
+
+.footer{
+  margin-top:48px;padding:24px 0;color:var(--brand-muted);font-size:14px
+}
+.hr{height:1px;background:#ECEDEE;border:0;margin:24px 0}
+
+.notice{
+  background:#FFFBEB;border:1px solid #FDE68A;color:#78350F;border-radius:12px;padding:12px 14px;font-size:14px
+}
+
+.form{
+  display:grid; gap:10px; background:var(--brand-white); padding:20px; border-radius:12px; box-shadow:var(--shadow)
+}
+.input, .select, textarea{
+  width:100%; padding:12px 10px; border:1px solid #E5E7EB; border-radius:10px; font-size:15px
+}
