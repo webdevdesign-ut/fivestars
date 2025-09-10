@@ -22,8 +22,8 @@ body{
 .fsc-banner{max-width:1440px;margin:auto;padding:5px 10px;}
 .fsc-banner >:first-child {float:left;}
 .fsc-banner >:last-child {float:right;text-align:right;}
-.nav-btn {display:inline-block;padding:20px 24px; border:1px solid var(--primary);border-radius:100px;color:var(--brand-dark);text-decoration:none;}
-.nav-btn :hover{color:var(--white);background:var(--secondary);}
+.nav-btn {display:inline-block;padding:20px 24px;border:1px solid var(--primary);border-radius:100px;color:var(--brand-dark);text-decoration:none;}
+.nav-btn :hover{color:var(--white);background:var(--secondary);font-weight:600}
 
 img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 
@@ -49,10 +49,10 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
   display:flex;gap:12px;flex-wrap:wrap;margin-top:12px
 }
 .btn{
-  appearance:none;border:0;border-radius:10px;padding:12px 16px;
-  font-weight:600;cursor:pointer;text-decoration:none;display:inline-block
+  border:0;border-radius:100px;padding:20px 24px;font-weight:600;cursor:pointer;text-decoration:none;
+  display:inline-block;background:var(--primary);color:#fff;border:1px solid var(--white)
 }
-.btn--primary{background:var(--primary);color:#fff}
+.btn:hover{background:var(--white);color:var(--primary);border:1px solid var(--primary);}
 .btn--ghost{background:#ECFDF5;color:var(--secondary)}
 .section{margin:36px 0}
 .section h2{margin:0 0 8px;font-size:26px}
@@ -79,3 +79,5 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 .input, .select, textarea{
   width:100%; padding:12px 10px; border:1px solid #E5E7EB; border-radius:10px; font-size:15px
 }
+
+.underline{border-bottom: 4px solid var(--primary);}
