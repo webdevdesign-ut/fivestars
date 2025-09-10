@@ -18,7 +18,7 @@ body{
   background:var(--brand-bg);
   line-height:1.6;
 }
-.fsc-banner{padding:0px 10px;}
+.fsc-banner{display:block;width:100%;margin:auto;padding:0px 10px;}
 .fsc-banner >:first-child {float:left;}
 .fsc-banner >:last-child {float:right;text-align:right;}
 .nav-btn {padding:20px 24px; border:1px solid var(--brand-primary);border-radius:100px;}
