@@ -75,3 +75,4 @@ body{
 .input, .select, textarea{
   width:100%; padding:12px 10px; border:1px solid #E5E7EB; border-radius:10px; font-size:15px
 }
+img {max-width: 100%;height:auto;object-fit: contain;}
