@@ -22,7 +22,7 @@ body{
 .fsc-banner{max-width:1440px;margin:auto;padding:5px 10px;}
 .fsc-banner >:first-child {float:left;}
 .fsc-banner >:last-child {float:right;text-align:right;}
-.nav-btn {display:inline-block;padding:20px 24px; border:1px solid var(--primary);border-radius:100px;}
+.nav-btn {display:inline-block;padding:20px 24px; border:1px solid var(--primary);border-radius:100px;color:var(--brand-dark);text-decoration:none;}
 .nav-btn :hover{color:var(--white);background:var(--secondary);}
 
 img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
