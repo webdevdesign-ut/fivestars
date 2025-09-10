@@ -22,8 +22,8 @@ body{
 .fsc-banner{max-width:1440px;margin:auto;padding:5px 10px;}
 .fsc-banner >:first-child {float:left;}
 .fsc-banner >:last-child {float:right;text-align:right;}
-.nav-btn {display:inline-block;padding:20px 24px;border:1px solid var(--primary);border-radius:100px;color:var(--brand-dark);text-decoration:none;}
-.nav-btn :hover{color:var(--white);background:var(--secondary);font-weight:600}
+.nav-btn {display:inline-block;padding:20px 24px;border:1px solid var(--primary);border-radius:100px;color:var(--brand-dark);text-decoration:none;transition: .7s all;}
+.nav-btn:hover{color:var(--white);background:var(--secondary);font-weight:600}
 
 img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 
@@ -52,7 +52,7 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
   border:0;border-radius:100px;padding:20px 24px;font-weight:600;cursor:pointer;text-decoration:none;
   display:inline-block;background:var(--primary);color:#fff;border:1px solid var(--white)
 }
-.btn:hover{background:var(--white);color:var(--primary);border:1px solid var(--primary);}
+.btn:hover{background:var(--white);color:var(--primary);border:1px solid var(--primary);transition: .7s all;}
 .btn--ghost{background:#ECFDF5;color:var(--secondary)}
 .section{margin:36px 0}
 .section h2{margin:0 0 8px;font-size:26px}
