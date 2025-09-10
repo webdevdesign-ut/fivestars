@@ -1,7 +1,7 @@
 :root{
-  --brand-primary:#00A457;
+  --brand-primary:#37b1d8;
   --brand-dark:#1F2937;
-  --brand-muted:#6B7280;
+  --brand-muted:#949494;
   --brand-bg:#F8FAFC;
   --brand-white:#FFFFFF;
   --brand-accent:#EAB308;
@@ -18,6 +18,10 @@ body{
   background:var(--brand-bg);
   line-height:1.6;
 }
+.fsc-banner >:first-child {float:left;}
+.fsc-banner >:last-child {float:right;text-align:right;}
+.nav-btn {padding:20px 24px; border:1px solid var(--brand-primary);border-radius:100px;}
+
 .container{max-width:var(--maxw); margin:0 auto; padding:24px;}
 .header{padding:24px 0}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--brand-dark)}
