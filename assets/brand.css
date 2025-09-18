@@ -104,3 +104,188 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 @media (prefers-reduced-motion: reduce){
   .reveal,.reveal-x,.reveal-scale{opacity:1!important; transform:none!important; transition:none!important}
 }
+
+/*LOGO SLIDER*/
+/* ===== Logo Marquee ===== */
+.wdd-marquee {
+  --logo-h: 56px;          /* default logo height */
+  --gap: 5rem;           /* space between logos */
+  --speed: 260;            /* pixels per second (base speed) */
+  --pause-on-hover: 1;     /* set to 0 if you don't want hover pause */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-block: 0.75rem;
+  contain: content; /* isolate for perf */
+}
+
+@media (min-width: 768px) {
+  .wdd-marquee { --logo-h: 64px; --gap: 3rem; --speed: 120; }
+}
+@media (min-width: 1280px) {
+  .wdd-marquee { --logo-h: 72px; --gap: 3.5rem; --speed: 140; }
+}
+
+/* the inner scrolling strip */
+.wdd-marquee__track {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  white-space: nowrap;  /* no wrapping -> no overlap */
+  will-change: transform;
+  /* animation is injected by JS with correct duration; keep a fallback: */
+  animation: wdd-marquee-linear 30s linear infinite;
+}
+
+/* individual items */
+.wdd-logo {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;        /* never shrink -> prevents overlap */
+}
+
+.wdd-logo img {
+  height: var(--logo-h);
+  width: auto;
+  max-width: 120px;       /* avoid WordPress theme max-width quirks */
+  object-fit: contain;
+  filter: none;          /* or grayscale(100%) contrast(120%) for subdued look */
+  display: block;
+}
+
+/* optional: pause on hover */
+.wdd-marquee:hover .wdd-marquee__track {
+  animation-play-state: var(--pause-on-hover);
+}
+.wdd-marquee:hover .wdd-marquee__track {
+  animation-play-state: paused; /* when --pause-on-hover: 1 */
+}
+
+/* Reduced motion: stop the scroll but keep layout */
+@media (prefers-reduced-motion: reduce) {
+  .wdd-marquee__track { animation: none !important; transform: none !important; }
+}
+
+/* keyframes used by JS (duration replaces 30s) */
+@keyframes wdd-marquee-linear {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); } /* we animate one half because we double content */
+}
+
+/* (nice to have) subtle edge gradient masks */
+.wdd-marquee::before,
+.wdd-marquee::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; width: 48px; pointer-events: none;
+  z-index: 1;
+}
+.wdd-marquee::before { left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.wdd-marquee::after { right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+/* If you have a dark background, change the edge color to match. */
+
+/* ===== Reviews Carousel ===== */
+.wdd-reviews {
+  --gap: 2rem;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --accent: #3b3b3b; /* tweak to your brand */
+  position: relative;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 2.5rem;
+}
+.wdd-reviews div { padding-left:2rem; }
+
+.wdd-reviews h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.wdd-reviews__viewport {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  transition: height .35s ease; /* auto-height animation */
+}
+
+.wdd-reviews__track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--gap);
+  will-change: transform;
+  transition: transform .45s ease;
+  touch-action: pan-y;
+}
+
+.wdd-review {
+  font-style: italic;
+  flex: 0 0 100%;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  color: #686868;
+}
+
+.wdd-review__author {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+/* Controls */
+.wdd-reviews__controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.wdd-reviews__btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  width: 40px; height: 40px;
+  font-size: 22px; line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #111827;
+  transition: background .2s ease, transform .1s ease;
+}
+.wdd-reviews__btn:hover { background: #e5e7eb; }
+.wdd-reviews__btn:active { transform: scale(.96); }
+
+.wdd-reviews__dots {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.wdd-reviews__dot {
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: #d1d5db;
+  border: 0;
+  cursor: pointer;
+}
+.wdd-reviews__dot[aria-selected="true"] {
+  background: var(--accent);
+}
+
+/* Dragging feedback */
+.wdd-reviews--dragging .wdd-reviews__track {
+  transition: none; /* no easing while dragging */
+}
+
+/* Reduced motion: disable transform animation */
+@media (prefers-reduced-motion: reduce) {
+  .wdd-reviews__track { transition: none !important; }
+  .wdd-reviews__viewport { transition: none !important; }
+}
