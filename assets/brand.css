@@ -86,3 +86,21 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 @media (max-width: 959.98px) {  /* below @m */ .uk-background-image@m { background-image: none !important; } }
 @media (max-width: 1199.98px) { /* below @l */ .uk-background-image@l { background-image: none !important; } }
 @media (max-width: 1599.98px) { /* below @xl */ .uk-background-image@xl { background-image: none !important; } }
+
+/* === Scroll reveal (reusable) === */
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; will-change:opacity, transform}
+.reveal.in-view{opacity:1; transform:none}
+
+/* Variants (optional) */
+.reveal-x{transform:translateX(18px)}
+.reveal-scale{transform:scale(.98)}
+.reveal-slow{transition-duration:.9s}
+.reveal-fast{transition-duration:.35s}
+
+/* Stagger via CSS var: --d (seconds) */
+.reveal{transition-delay:var(--d,0s)}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal,.reveal-x,.reveal-scale{opacity:1!important; transform:none!important; transition:none!important}
+}
