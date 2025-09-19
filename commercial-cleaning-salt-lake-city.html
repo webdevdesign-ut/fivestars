@@ -32,20 +32,18 @@
 
   <div><!-- HERO!-->
     <section class="uk-background-cover uk-background-bottom-left" style="background-image:url('assets/Five Stars Cleaning team cleaning a commercial space with vacums, liquids and atomizers.jpg'); min-height:100vh;" alt="Two professional cleaners in black polos and jeans sanitizing a modern office lobby with large windows.">
-      <div class="content">
-        <div class="container">
+      <div class="content" data-reveal-group>
           <div style="height:35vh;"></div>
-          <div style="background:#fff9;backdrop-filter:blur(5px);-webkit-backdrop-filter: blur(5px);border-radius:6px;padding:2rem;" data-reveal-group>
+          <div class="container reveal reveal-slow" style="background:#fff9;backdrop-filter:blur(5px);-webkit-backdrop-filter: blur(5px);border-radius:6px;padding:2rem;">
               <p class="m-0 lead reveal"><b>Salt Lake City’s Trusted</b></p>
               <h1 class="reveal">Commercial Cleaners<br></h1>
               <p class="sub reveal"><i>– Serving 200+ Businesses Since 2015. Reliable, Scalable, On-Spec</i><br>
               Offices, retail, medical suites, post-construction—tailored programs for spotless spaces.</p>
-              <div class="cta reveal">
-                <a class="btn btn--primary" href="#quote" data-cta="quote">Get a Free Site Walkthrough</a>
-                <a class="btn reveal" href="tel:+13852027198">(385) 202-7198</a>
-              </div>
+                <div class="cta reveal">
+                  <a class="btn btn--primary" href="#quote" data-cta="quote">Get a Free Site Walkthrough</a>
+                  <a class="btn reveal" href="tel:+13852027198">(385) 202-7198</a>
+                </div>
           </div>
-        </div>
       </div>
     </section>
 
@@ -59,34 +57,52 @@
 
     <div style="height:40px;"></div>
     <section class="container" style="text-align:center;" data-reveal-group>
-      <h2 class="reveal">Programs We Offer</h2>
+      <h2 class="reveal">Our Commercial Cleaning Programs</h2>
       <div class="twocolumns">
         <div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/calendar.png" width="40" alt=""><p class="lead"><b>Weekly janitorial</b></p></div>
-            Keep your workplace spotless with scheduled cleaning that covers dusting, trash removal, floors, and restrooms.
+            <div class="line-flex">
+              <img src="assets/calendar.png" width="40" alt="a calendar">
+              <h3 class="lead"><b>Weekly janitorial</b></h3>
+            </div>
+            <p>Keep your workplace spotless with scheduled cleaning that covers dusting, trash removal, floors, and restrooms.</p>
           </div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/vacum.png" width="40" alt=""><p class="lead"><b>Floor care programs</b></p></div>
-            Protect and extend the life of your flooring with expert vacuuming, mopping, waxing, and deep treatments.
+            <div class="line-flex">
+              <img src="assets/vacum.png" width="40" alt="a vacuum cleaning floors">
+              <h3 class="lead"><b>Floor care programs</b></h3>
+            </div>
+            <p>Protect and extend the life of your flooring with expert vacuuming, mopping, waxing, and deep treatments.</p>
           </div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/office cleaning icon.png" width="40" alt=""><p class="lead"><b>Office Cleaning</b></p></div>
-            Professional crews that sanitize desks, breakrooms, and high-touch surfaces to keep employees healthy and productive.
+            <div class="line-flex">
+              <img src="assets/office cleaning icon.png" width="40" alt="a clean and shiny desktop">
+              <h3 class="lead"><b>Office Cleaning</b></h3>
+            </div>
+            <p>Professional crews that sanitize desks, breakrooms, and high-touch surfaces to keep employees healthy and productive.</p>
           </div>
         </div>
         <div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/window cleaning.png" width="40" alt=""><p class="lead"><b>Window & glass maintenance</b></p></div>
-            Crystal-clear windows and glass surfaces that enhance natural light and give clients a great first impression.
+            <div class="line-flex">
+              <img src="assets/window cleaning.png" width="40" alt="clean windows glasses">
+              <h3 class="lead"><b>Window & glass maintenance</b></h3>
+            </div>
+            <p>Crystal-clear windows and glass surfaces that enhance natural light and give clients a great first impression.</p>
           </div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/industrial cleaning.png" width="40" alt=""><p class="lead"><b>Turnover & post-construction</b></p></div>
-            Detailed cleaning that removes dust, debris, and residue, making new or renovated spaces move-in ready.
+            <div class="line-flex">
+              <img src="assets/industrial cleaning.png" width="40" alt="a clean helmet">
+              <h3 class="lead"><b>Turnover & post-construction</b></h3>
+            </div>
+            <p>Detailed cleaning that removes dust, debris, and residue, making new or renovated spaces move-in ready.</p>
           </div>
           <div class="p-3 reveal">
-            <div class="line-flex"><img src="assets/restaurant cleaning icon.png" width="40" alt=""><p class="lead"><b>Restaurant cleaning</b></p></div>
-            Specialized sanitation for kitchens, dining areas, and restrooms, helping you stay compliant and impress your guests.
+            <div class="line-flex">
+              <img src="assets/restaurant cleaning icon.png" width="40" alt="a clean restaurant tray">
+              <h3 class="lead"><b>Restaurant cleaning</b></h3>
+            </div>
+            <p>Specialized sanitation for kitchens, dining areas, and restrooms, helping you stay compliant and impress your guests.</p>
           </div>
         </div>
       </div>
@@ -107,11 +123,12 @@
 <div class="fsc-gradient-b">
     <div class="container">
       <div style="text-align:center;">
-        <img src="assets/Reviews.png" style="max-width: 150px;" alt="Five stars Google Reviews">
         <h2>Certified Reviews</h2>
         <p>Discover why we lead the cleaning industry in Utah!</p>
+        <div style="height:40px;"></div>
+        <img src="assets/Reviews.png" style="max-width: 150px;" alt="Five stars Google Reviews">
       </div>
-      <div style="height:40px;"></div>
+      
       <div class="uk-slider" id="reviews-slider" aria-roledescription="carousel">
         <div class="uk-slider-container">
           <ul class="uk-slider-items">
@@ -183,9 +200,29 @@
           <li role="tab" aria-label="Go to testimonial 5"></li>
         </ul>
       </div>
-      <div style="height:40px;"></div>
     </div>
+    <div style="height:80px;"></div>
+    <div style="text-align:center;">
+      <h2>Proudly Serving</h2>
+      <p>Satisfied businesses after trusting FIve Stars Cleaning with their spaces.</p>
     </div>
+    <div style="height:20px;"></div>
+    <div class="wdd-marquee">
+      <div class="wdd-marquee__track">
+        <div class="wdd-logo"><img src="assets/client logos/goodyear.webp" alt="Good Year logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/My-buddy-the-plumber-logo.webp" alt="My buddy the plumber logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/Source-logistics.webp" alt="Source logistics logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/trugolf-simulators.webp" alt="Trugold simulator"></div>
+        <div class="wdd-logo"><img src="assets/client logos/SLWS.webp" alt="SLWS logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/Quick-dispense-logo.webp" alt="Quick dispense logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/freedom-integrated-medicine.webp" alt="Freedom Integrated Medicine Logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/ARK-studios.webp" alt="ARK Studio logo"></div>
+        <div class="wdd-logo"><img src="assets/client logos/1-day-bath.webp" alt="1-Day Bath logo"></div>
+      </div>
+    </div>
+    <div style="height:100px;"></div>
+  
+</div>
 <div class="shapes">
   <div class="waves-shape w-embed"><!-- Waves Horizontal Shape -->
     <div style="overflow: hidden;">
@@ -199,37 +236,22 @@
 </div>
     
 
-    <div style="height:80px;"></div>
-    <div class="container" style="text-align:center;"><h2>Proudly Serving</h2></div>
-    <div style="height:40px;"></div>
-    <div class="wdd-marquee">
-        <div class="wdd-marquee__track">
-            <div class="wdd-logo"><img src="assets/client logos/goodyear.webp" alt="Good Year logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/My-buddy-the-plumber-logo.webp" alt="My buddy the plumber logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/Source-logistics.webp" alt="Source logistics logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/trugolf-simulators.webp" alt="Trugold simulator"></div>
-            <div class="wdd-logo"><img src="assets/client logos/SLWS.webp" alt="SLWS logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/Quick-dispense-logo.webp" alt="Quick dispense logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/freedom-integrated-me.webp" alt="Logo 3"></div>
-            <div class="wdd-logo"><img src="assets/client logos/ARK-studios.webp" alt="ARK Studio logo"></div>
-            <div class="wdd-logo"><img src="assets/client logos/1-day-bath.webp" alt="1-Day Bath logo"></div>
-        </div>
-    </div>
+
 
     <div style="height:80px;"></div>
     <section class="container cardgrid" data-reveal-group>
       <div class="card reveal">
-        <img src="assets/Increadible team coordination.png" width="110" alt="">
+        <img src="assets/Increadible team coordination.png" width="100" alt="A van transporting cleaning personel">
         <p class="lead"><b>Managed Crews</b></p>
         <p>Trained teams supervised for consistency, reliability, and accountability at every site.</p>
       </div>
       <div class="card reveal">
-        <img src="assets/Standards of safety for industries.png" width="110" alt="">
+        <img src="assets/Standards of safety for industries.png" width="100" alt="A shiel, indicating we prioritize your health and safety">
         <p class="lead"><b>Insured Work</b></p>
         <p>Fully insured services to protect your business and give you complete peace of mind.</p>
       </div>
       <div class="card reveal">
-        <img src="assets/Award winner for more than 5 years.png" width="110" alt="">
+        <img src="assets/Award winner for more than 5 years.png" width="100" alt="A badge indicating trust and certifications">
         <p class="lead"><b>Reporting & Compliance</b></p>
         <p>Transparent reporting and recognized excellence with over five years of industry awards.</p>
       </div>
@@ -260,7 +282,7 @@
           <input class="input" name="email" placeholder="Email">
           <textarea class="input" name="scope" rows="3" placeholder="Sq ft, floors, frequency, special requirements"></textarea>
           <div style="height:20px;"></div>
-          <button class="btn btn--primary" data-cta="submit">Request Proposal</button>
+          <button class="btn" data-cta="submit">Schedule Now</button>
         </form>
       </div>
     </section>
