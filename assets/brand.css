@@ -16,8 +16,8 @@ body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "
   color:var(--brand-dark);background:var(--brand-bg);line-height:1.6; font-weight:400; font-size: 16px;}
 
 a{color:var(--secondary);text-decoration:none;}a:hover{color:var(--brand-dark)}
-h1{margin:0 0 4px;line-height: 1.05; font-weight: 700;}
-h2{margin:0 0 8px;}
+h1{margin:0 0 4px;line-height:.8;font-weight: 700;}
+h2{margin:0 0 8px;line-height:.9}
 img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 .site-logo {height: auto; min-width: 60px; max-width: 300px;}
 @media (max-width: 480px) { .fsc-banner { flex-direction: column; gap: .5rem;} }
