@@ -190,7 +190,7 @@ function submitLead(e){
   e.preventDefault();
   const fd = new FormData(e.target);
   // Example: POST to your endpoint
-  fetch('https://formspree.io/f/your-id', {method:'POST', body:fd})
+  fetch('https://formspree.io/f/xblzyvkl', {method:'POST', body:fd})
     .then(()=>{ alert('Thanks! We’ll contact you shortly.'); e.target.reset(); })
     .catch(()=>{ alert('Sorry—please call us: (385) 202-7198'); });
 }
