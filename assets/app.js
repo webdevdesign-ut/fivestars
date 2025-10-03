@@ -3,7 +3,57 @@ document.addEventListener('DOMContentLoaded', () => {
   const qs = (s)=>document.querySelector(s);
   document.querySelectorAll('[data-cta]').forEach(btn=>{
     btn.addEventListener('click',()=>console.log('CTA_CLICK', btn.dataset.cta));
+
+    (() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Items we animate, and groups that stagger their children
+  const items  = document.querySelectorAll('.ok-anim');
+  const groups = document.querySelectorAll('.ok-stagger-group');
+
+  if (reduce) {
+    items.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  // Helper: reveal with optional delay already in CSS variable
+  const reveal = (el) => {
+    el.classList.add('visible');
+  };
+
+  // Observe both individual items and groups
+  const io = new IntersectionObserver((entries, obs) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+
+      const el = entry.target;
+
+      // If it's a stagger group, reveal its children with stepped delays
+      if (el.classList.contains('ok-stagger-group')) {
+        const step = getComputedStyle(el).getPropertyValue('--ok-stagger-step').trim() || '.08s';
+        const children = el.querySelectorAll('.ok-anim');
+        children.forEach((child, i) => {
+          child.style.setProperty('--ok-delay', `calc(${step} * ${i})`);
+          reveal(child);
+        });
+      } else {
+        // Single item
+        reveal(el);
+      }
+
+      obs.unobserve(el);
+    }
+  }, {
+    root: null,
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.12
   });
+
+  // Start observing
+  items.forEach(el => io.observe(el));
+  groups.forEach(el => io.observe(el));
+})();
+});
 
   (function () {
   function initMarquee(root) {

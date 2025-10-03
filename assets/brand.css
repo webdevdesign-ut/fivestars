@@ -249,7 +249,7 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 }
 
 
-.wdd-review{
+.wdd-review {
   margin:auto;
   border-radius: 8px;
   background: #fff;
@@ -280,3 +280,57 @@ img {display:inline-block;max-width: 100%;height:auto;object-fit: contain;}
 
 @media(min-width: 640px) {h1{font-size:3.6rem;} h2{font-size:2.8rem}}
 @media (max-width: 640px) {h1{font-size:2.5rem;} h2{font-size:1.9rem}}
+
+/* ===== Defaults ===== */
+:root{
+  --ok-dur: .8s;
+  --ok-ease: cubic-bezier(.2,.65,.2,1);
+  --ok-distance: 16px; /* slide distance */
+}
+
+/* Base (hidden) */
+.ok-anim{
+  opacity: 0;
+  will-change: opacity, transform, filter, clip-path;
+  transition:
+    opacity var(--ok-dur) var(--ok-ease),
+    transform var(--ok-dur) var(--ok-ease),
+    filter var(--ok-dur) var(--ok-ease),
+    clip-path var(--ok-dur) var(--ok-ease);
+  transition-delay: var(--ok-delay, 0s);
+}
+
+/* Visible */
+.ok-anim.visible{
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0 0 0 0 round .5px);
+}
+
+/* ===== Variants (6) ===== */
+
+/* 1) Fade */
+.ok-anim.ok-fade:not(.visible){ transform: translateY(0); }
+
+/* 2) Fade Up */
+.ok-anim.ok-fade-up:not(.visible){ transform: translateY(var(--ok-distance)); }
+
+/* 3) Fade Right (enters L→R) */
+.ok-anim.ok-fade-right:not(.visible){ transform: translateX(calc(-1 * var(--ok-distance))); }
+
+/* 4) Scale In */
+.ok-anim.ok-scale-in:not(.visible){ transform: scale(.975); }
+
+/* 5) Blur In Up (use sparingly) */
+.ok-anim.ok-blur-in-up:not(.visible){
+  transform: translateY(calc(var(--ok-distance) * 0.75));
+  filter: blur(6px);
+}
+.ok-anim.ok-blur-in-up.visible{ filter: blur(0); }
+
+/* 6) Clip Reveal (horizontal mask) */
+.ok-anim.ok-clip-reveal:not(.visible){
+  clip-path: inset(0 100% 0 0 round .5px);
+  transform: translateY(0);
+}
