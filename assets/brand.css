@@ -111,51 +111,52 @@ button.submit:hover {background:var(--brand-bg); color:var(--secondary);}
 }
 
 /*LOGO SLIDER*/
-/* ===== Logo Marquee ===== */
+/* ===== Logo Marquee (seamless, no hover pause) ===== */
 .wdd-marquee {
-  --logo-h: 56px;          /* default logo height */
-  --gap: 5rem;           /* space between logos */
-  --speed: 260;            /* pixels per second (base speed) */
-  --pause-on-hover: 1;     /* set to 0 if you don't want hover pause */
+  --logo-h: 56px;
+  --gap: 3rem;
+  --speed: 140;          /* pixels per second (used by JS for duration) */
   position: relative;
   overflow: hidden;
   width: 100%;
   padding-block: 0.75rem;
-  contain: content; /* isolate for perf */
 }
 
 @media (min-width: 768px) {
-  .wdd-marquee { --logo-h: 64px; --gap: 3rem; --speed: 120; }
+  .wdd-marquee { --logo-h: 64px; --gap: 3rem; --speed: 140; }
 }
 @media (min-width: 1280px) {
-  .wdd-marquee { --logo-h: 72px; --gap: 3.5rem; --speed: 140; }
+  .wdd-marquee { --logo-h: 72px; --gap: 3.5rem; --speed: 160; }
 }
 
-/* the inner scrolling strip */
+/* inner strip holds TWO copies of the logos (A+B) */
 .wdd-marquee__track {
   display: inline-flex;
   align-items: center;
   gap: var(--gap);
-  white-space: nowrap;  /* no wrapping -> no overlap */
+  white-space: nowrap;
   will-change: transform;
-  /* animation is injected by JS with correct duration; keep a fallback: */
-  animation: wdd-marquee-linear 30s linear infinite;
+  /* JS sets animation duration dynamically for exact seamless loop */
+  animation: wdd-marquee-move 30s linear infinite;
+}
+
+@keyframes wdd-marquee-move {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--marquee-distance, 1000px))); }
 }
 
 /* individual items */
 .wdd-logo {
   display: inline-flex;
   align-items: center;
-  flex: 0 0 auto;        /* never shrink -> prevents overlap */
+  flex: 0 0 auto;
 }
-
 .wdd-logo img {
   height: var(--logo-h);
   width: auto;
-  max-width: 120px;       /* avoid WordPress theme max-width quirks */
+  max-width: 160px;
   object-fit: contain;
-  filter: none;          /* or grayscale(100%) contrast(120%) for subdued look */
-  display: block;
+  filter: none;
 }
 
 /* optional: pause on hover */
