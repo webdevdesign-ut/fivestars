@@ -156,12 +156,14 @@
             <h2 class="reveal">Book Your Restaurant Cleaning Today</h2>
             <p class="reveal">Ensure your restaurant is spotless for a perfect customer experience. Same-week and emergency service available.</p>
             <form class="form reveal" action="https://formspree.io/f/xblzyvkl" method="POST" onsubmit="submitLead(event)">
-              <input class="input" name="restaurant" placeholder="Restaurant name" required>
               <input class="input" name="contact" placeholder="Contact name" required>
-              <input class="input" name="phone" placeholder="Phone" required>
+                <div class="twocolumns">
+                  <div><input class="input" name="phone" placeholder="Phone" required></div>
+                  <div><input class="input" name="email" placeholder="Email"></div>
+                </div>
               <textarea class="input" name="scope" rows="3" placeholder="Scope, schedule, special requests"></textarea>
               <div style="height:12px"></div>
-              <button class="btn" data-cta="submit">Schedule Now</button>
+              <button class="btn submit" data-cta="submit">Schedule Now</button>
             </form>
           </section>
       </div>

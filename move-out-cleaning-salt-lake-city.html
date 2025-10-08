@@ -244,11 +244,13 @@
           <p class="reveal">Tell us the address, timeline, and home size.</p>
           <form class="form reveal" action="https://formspree.io/f/xblzyvkl" method="POST" onsubmit="submitLead(event)">
             <input class="input" name="name" placeholder="Full name" required>
-            <input class="input" name="phone" placeholder="Phone" required>
-            <input class="input" name="email" placeholder="Email">
+              <div class="twocolumns">
+                <div><input class="input" name="phone" placeholder="Phone" required></div>
+                <div><input class="input" name="email" placeholder="Email"></div>
+              </div>
             <textarea class="input" name="notes" rows="3" placeholder="Address, beds/baths, preferred date"></textarea>
             <div style="height:12px"></div>
-            <button class="btn">Schedule Now</button>
+            <button class="btn submit" data-cta="submit">Schedule Now</button>
           </form>
         </section>
     </div>

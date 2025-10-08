@@ -273,13 +273,14 @@
         <h2 class="reveal">Get your Cleaning Proposal</h2>
         <p class="reveal">The first step for you to focus on what matter for your business, <i>we'll take care of the dirty work.</i></p>
         <form class="form reveal" action="https://formspree.io/f/xblzyvkl" method="POST" onsubmit="submitLead(event)">
-          <input class="input" name="company" placeholder="Company name" required>
           <input class="input" name="contact" placeholder="Contact name" required>
-          <input class="input" name="phone" placeholder="Phone" required>
-          <input class="input" name="email" placeholder="Email">
+            <div class="twocolumns">
+              <div><input class="input" name="phone" placeholder="Phone" required></div>
+              <div><input class="input" name="email" placeholder="Email"></div>
+            </div>
           <textarea class="input" name="scope" rows="3" placeholder="Sq ft, floors, frequency, special requirements"></textarea>
           <div style="height:20px;"></div>
-          <button class="btn" data-cta="submit">Schedule Now</button>
+          <button class="btn submit" data-cta="submit">Schedule Now</button>
         </form>
       </div>
     </section>
