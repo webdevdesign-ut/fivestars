@@ -244,15 +244,26 @@ function submitLead(e) {
 }
 
 //EVENT TRACKER FOR PHONE CALLS
-document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();  // prevent immediate jump to phone dialer
-    // Trigger conversion event with a callback to continue the call
-    gtag('event', 'conversion', {
-      'send_to': 'AW-11388356947/rN5UCO7Vx6kbENOSsrYq',
-      'event_callback': () => { window.location = link.href; }
+// Safe gtag shim (works even if gtag.js is late)
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+
+  // Tiny helper that never throws
+  function sendAdConversion(sendTo, params) {
+    try {
+      if (sendTo) gtag('event', 'conversion', Object.assign({ send_to: sendTo }, params || {}));
+    } catch (e) { /* keep UI alive */ }
+  }
+
+  // Example: track tel: clicks
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var href = link.getAttribute('href');
+        var done = false;
+        function go() { if (!done) { done = true; window.location.href = href; } }
+        sendAdConversion('AW-11388356947/rN5UCO7Vx6kbENOSsrYq', { event_callback: go });
+        setTimeout(go, 700); // fallback so navigation isn't blocked
+      });
     });
-    // In case the gtag request takes too long, fallback to dialing after short delay:
-    setTimeout(() => { window.location = link.href; }, 500);
   });
-});
