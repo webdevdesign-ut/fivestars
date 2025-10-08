@@ -185,39 +185,74 @@ const slider = document.querySelector(".uk-slider");
 
 });
 
-// Simple form handler (replace action with your backend/Zapier/Forms service)
-function submitLead(e){
-  e.preventDefault();
-  const fd = new FormData(e.target);
-  // Example: POST to your endpoint
-  fetch('https://formspree.io/f/xblzyvkl', {method:'POST', body:fd})
-    .then(()=>{ alert('Thanks! We’ll contact you shortly.'); e.target.reset(); })
-    .catch(()=>{ alert('Sorry—please call us: (385) 202-7198'); });
+
+// FORM HANDLER WITH ERROR CHECKING
+function submitLead(e) {
+  e.preventDefault();  // Stop form from submitting normally
+  const form = e.target;
+  const nameField = form.querySelector('[name="contact"], [name="name"]');  // covers both possible name fields
+  const phoneField = form.querySelector('[name="phone"]');
+  const emailField = form.querySelector('[name="email"]');
+  const statusEl = document.getElementById('form-status');
+  statusEl.textContent = "";  // clear previous status
+  
+  // Validate required fields
+  if (!nameField.value.trim() || !phoneField.value.trim()) {
+    statusEl.textContent = "Please fill in your name and phone number.";
+    return;  // stop submission due to validation error
+  }
+  // Validate email format if email is not empty
+  if (emailField && emailField.value && !/^\S+@\S+\.\S+$/.test(emailField.value)) {
+    statusEl.textContent = "Please enter a valid email address.";
+    return;
+  }
+  // Validate phone number pattern (ensure it has enough digits)
+  const digitsOnly = phoneField.value.replace(/\D/g, "");  // remove non-numeric chars
+  if (digitsOnly.length < 7) {  // require at least 7 digits (adjustable based on needs)
+    statusEl.textContent = "Please enter a valid phone number.";
+    return;
+  }
+  // If we reach here, all validations passed. Proceed to submit via fetch...
+  const formData = new FormData(form);
+  fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }  // request JSON response from Formspree
+  }).then(response => {
+    if (response.ok) {
+      // Success: show confirmation and reset form
+      statusEl.style.color = "green";
+      statusEl.textContent = "Thank you! We’ll contact you shortly.";
+      form.reset();
+      // **Trigger Google Ads conversion for form submit here (see next section)**
+      gtag('event', 'conversion', {'send_to': 'AW-11388356947/tcMeCIeoyKkbENOSsrYq'});
+    } else {
+      // Server returned an error status (e.g. validation issue)
+      response.json().then(data => {
+        if (data.errors && data.errors.length) {
+          // Show Formspree validation errors (e.g. invalid email format)
+          statusEl.textContent = data.errors.map(err => err.message).join(", ");
+        } else {
+          statusEl.textContent = "Oops! There was a problem submitting your form.";
+        }
+      });
+    }
+  }).catch(() => {
+    // Network or CORS error (Formspree not reachable or other issues)
+    statusEl.textContent = "Sorry, we could not submit the form. Please call us at (385) 202-7198.";
+  });
 }
 
-// ===== Scroll reveal with IntersectionObserver =====
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const io = new IntersectionObserver((entries, obs)=>{
-    entries.forEach(entry=>{
-      if (entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        obs.unobserve(entry.target);
-      }
+//EVENT TRACKER FOR PHONE CALLS
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();  // prevent immediate jump to phone dialer
+    // Trigger conversion event with a callback to continue the call
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11388356947/rN5UCO7Vx6kbENOSsrYq',
+      'event_callback': () => { window.location = link.href; }
     });
-  }, {root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15});
-
-  // Single items
-  document.querySelectorAll('[data-reveal], .reveal').forEach(el=> io.observe(el));
-
-  // Stagger groups
-  document.querySelectorAll('[data-reveal-group]').forEach(group=>{
-    const children = group.querySelectorAll(':scope > .reveal, :scope > [data-reveal]');
-    children.forEach((el, i)=>{
-      el.style.setProperty('--d', (i * 0.08)+'s'); // 80ms stagger
-      io.observe(el);
-    });
+    // In case the gtag request takes too long, fallback to dialing after short delay:
+    setTimeout(() => { window.location = link.href; }, 500);
   });
-})();
-
+});

@@ -160,13 +160,14 @@
           <h2 class="reveal">Book Your Free Walkthrough</h2>
           <p class="reveal">Let us assess your office cleaning needs and create a custom plan that fits your team and schedule.</p>
           <form class="form reveal" action="https://formspree.io/f/xblzyvkl" method="POST" onsubmit="submitLead(event)">
-            <input class="input" name="contact" placeholder="Contact name" required>
-              <div class="twocolumns">
-                <div><input class="input" name="phone" placeholder="Phone" required></div>
-                <div><input class="input" name="email" placeholder="Email"></div>
-              </div>
-            <textarea class="input" name="scope" rows="3" placeholder="Sq ft, restrooms, frequency (e.g., 3x/week)"></textarea>
-            <div style="height:12px"></div>
+            <input class="input" type="text" name="contact" placeholder="Contact Name" required>
+            <div class="twocolumns" style="gap: 2rem;">
+              <div><input class="input" type="tel" name="phone" placeholder="Phone" required pattern="[0-9\s\-\+\(\)]{7,}"></div>
+              <div><input class="input" type="email" name="email" placeholder="Email (optional)"></div>
+            </div>
+            <textarea class="input" name="scope" rows="3" placeholder="Sq ft, floors, frequency, special requirements"></textarea>
+            <p id="form-status" class="error-message" style="color:red;"></p>
+            <div style="height:20px;"></div>
             <button class="btn submit" data-cta="submit">Schedule Now</button>
           </form>
         </section>
