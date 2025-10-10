@@ -67,6 +67,8 @@ button.submit {background:var(--secondary); color:var(--brand-bg); font-size:1.2
 button.submit:hover {background:var(--brand-bg); color:var(--secondary);}
 
 .underline{border-bottom: 4px solid var(--primary);}
+.faq div{border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:2rem;} .faq div:last-child{margin-bottom:0;}
+.faq h3{border-bottom: 4px solid var(--primary);}
 
 /* UI KIT BACKGROUND */
 .uk-background-cover { background-size: cover; background-position: 50% 50%; background-repeat: no-repeat; }
