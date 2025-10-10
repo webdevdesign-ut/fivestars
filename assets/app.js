@@ -125,9 +125,7 @@
   // ===== Init on DOM ready =====
   document.addEventListener('DOMContentLoaded', function () {
     initCTA();
-    initReveal();
     initTelTracking();
-    // NOTE: Slider is initialized by reviews-slider.js — no duplicate code here.
   });
 
 })();

@@ -67,10 +67,13 @@ button.submit {background:var(--secondary); color:var(--brand-bg); font-size:1.2
 button.submit:hover {background:var(--brand-bg); color:var(--secondary);}
 
 .underline{border-bottom: 4px solid var(--primary);}
-.faq div{border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:2rem;} .faq div:last-child{margin-bottom:0;}
-.faq h3{border-bottom: 4px solid var(--primary);}
 
-/* UI KIT BACKGROUND */
+.faq div{border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:2rem;} .faq div:last-child{margin-bottom:0;}
+.faq-item { width: 100%; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border-bottom: 4px solid var(--primary); }
+.faq-item::after { content: "+"; font-weight: 700; transition: transform .2s; }
+.faq-item[aria-expanded="true"]::after { content: "–"; }
+
+/* ===== UI KIT BACKGROUND ===== */
 .uk-background-cover { background-size: cover; background-position: 50% 50%; background-repeat: no-repeat; }
 .uk-background-contain { background-size: contain; background-position: 50% 50%; background-repeat: no-repeat; }
 .uk-background-width-1-1 { background-size: 100% auto; background-position: 50% 50%; background-repeat: no-repeat; }
@@ -94,248 +97,68 @@ button.submit:hover {background:var(--brand-bg); color:var(--secondary);}
 @media (max-width: 1199.98px) { /* below @l */ .uk-background-image@l { background-image: none !important; } }
 @media (max-width: 1599.98px) { /* below @xl */ .uk-background-image@xl { background-image: none !important; } }
 
-/* === Scroll reveal (reusable) === */
+/* ===== SCROLL REVEAL ANIMATION ===== */
 .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; will-change:opacity, transform}
 .reveal.in-view{opacity:1; transform:none}
-
 /* Variants (optional) */
 .reveal-x{transform:translateX(18px)}
 .reveal-scale{transform:scale(.98)}
 .reveal-slow{transition-duration:.9s}
 .reveal-fast{transition-duration:.35s}
-
 /* Stagger via CSS var: --d (seconds) */
 .reveal{transition-delay:var(--d,0s)}
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .reveal,.reveal-x,.reveal-scale{opacity:1!important; transform:none!important; transition:none!important}
-}
-
-/*LOGO SLIDER*/
-/* ===== Logo Marquee (seamless, no hover pause) ===== */
-.wdd-marquee {
-  --logo-h: 56px;
-  --gap: 3rem;
-  --speed: 140;          /* pixels per second (used by JS for duration) */
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-block: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .wdd-marquee { --logo-h: 64px; --gap: 3rem; --speed: 140; }
-}
-@media (min-width: 1280px) {
-  .wdd-marquee { --logo-h: 72px; --gap: 3.5rem; --speed: 160; }
-}
-
+/* ===== LOGO SLIDER ===== */
+.wdd-marquee {--logo-h: 56px;--gap: 3rem;--speed: 140;position: relative;overflow: hidden;width: 100%;padding-block: 0.75rem;}
+@media (min-width: 768px) { .wdd-marquee { --logo-h: 64px; --gap: 3rem; --speed: 140; } }
+@media (min-width: 1280px) { .wdd-marquee { --logo-h: 72px; --gap: 3.5rem; --speed: 160; } }
 /* inner strip holds TWO copies of the logos (A+B) */
-.wdd-marquee__track {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gap);
-  white-space: nowrap;
-  will-change: transform;
-  /* JS sets animation duration dynamically for exact seamless loop */
-  animation: wdd-marquee-move 30s linear infinite;
-}
-
-@keyframes wdd-marquee-move {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-1 * var(--marquee-distance, 1000px))); }
-}
-
+.wdd-marquee__track {display: inline-flex;align-items: center;gap: var(--gap);white-space: nowrap;will-change: transform;animation: wdd-marquee-move 30s linear infinite;}
+@keyframes wdd-marquee-move { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance, 1000px))); } }
 /* individual items */
-.wdd-logo {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-}
-.wdd-logo img {
-  height: var(--logo-h);
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
-  filter: none;
-}
-
+.wdd-logo {display: inline-flex;align-items: center;flex: 0 0 auto;}
+.wdd-logo img {height: var(--logo-h);width: auto;max-width: 160px;object-fit: contain;filter: none;}
 /* optional: pause on hover */
-.wdd-marquee:hover .wdd-marquee__track {
-  animation-play-state: var(--pause-on-hover);
-}
-.wdd-marquee:hover .wdd-marquee__track {
-  animation-play-state: paused; /* when --pause-on-hover: 1 */
-}
-
+.wdd-marquee:hover .wdd-marquee__track { animation-play-state: var(--pause-on-hover); }
+.wdd-marquee:hover .wdd-marquee__track { animation-play-state: paused; /* when --pause-on-hover: 1 */ }
 /* Reduced motion: stop the scroll but keep layout */
-@media (prefers-reduced-motion: reduce) {
-  .wdd-marquee__track { animation: none !important; transform: none !important; }
-}
-
+@media (prefers-reduced-motion: reduce) { .wdd-marquee__track { animation: none !important; transform: none !important; } }
 /* keyframes used by JS (duration replaces 30s) */
-@keyframes wdd-marquee-linear {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(-50%,0,0); } /* we animate one half because we double content */
-}
-
+@keyframes wdd-marquee-linear {from { transform: translate3d(0,0,0); } to   { transform: translate3d(-50%,0,0); } /* we animate one half because we double content */}
 /* (nice to have) subtle edge gradient masks */
-.wdd-marquee::before,
-.wdd-marquee::after {
-  content: "";
-  position: absolute; top: 0; bottom: 0; width: 48px; pointer-events: none;
-  z-index: 1;
-}
-.wdd-marquee::before { left: 0;
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
-}
-.wdd-marquee::after { right: 0;
-  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
-}
+.wdd-marquee::before, .wdd-marquee::after {content: "";position: absolute; top: 0; bottom: 0; width: 48px; pointer-events: none;z-index: 1;}
+.wdd-marquee::before { left: 0;background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));}
+.wdd-marquee::after { right: 0;background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));}
 /* If you have a dark background, change the edge color to match. */
 
 /* ===== Reviews Carousel ===== */
 /* Basic Slider Container */
-.uk-slider {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
+.uk-slider {position: relative;overflow: hidden;width: 100%;}
 /* Track wrapper */
-.uk-slider-items {
-  display: flex;
-  transition: transform 0.5s ease;
-  will-change: transform;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+.uk-slider-items {display: flex;transition: transform 0.5s ease;will-change: transform;list-style: none;padding: 0;margin: 0;}
 /* Slides */
-.uk-slider-items > li {
-  min-width: 100%;
-  box-sizing: border-box;
-}
-
+.uk-slider-items > li {min-width: 100%;box-sizing: border-box;}
 /* Navigation arrows */
-.uk-slidenav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  padding: 0.5rem 0.8rem;
-  cursor: pointer;
-}
+.uk-slidenav {position: absolute;top: 50%;transform: translateY(-50%);background: rgba(0,0,0,0.4);color: white;border: none;padding: 0.5rem 0.8rem;cursor: pointer;}
 .uk-slidenav.prev { left: 10px; }
 .uk-slidenav.next { right: 10px; }
-
 /* Dots */
-.uk-dotnav {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-}
-.uk-dotnav li {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-}
-.uk-dotnav li.active {
-  background: #333;
-}
+.uk-dotnav {display: flex;justify-content: center;margin-top: 1rem;gap: 0.5rem;list-style: none;padding: 0;}
+.uk-dotnav li {width: 10px;height: 10px;border-radius: 50%;background: #ccc;cursor: pointer;}
+.uk-dotnav li.active {background: #333;}
 
-
-.wdd-review {
-  margin:auto;
-  border-radius: 8px;
-  background: #fff;
-  color: #505050;
-  max-width: 800px;
-  padding:2.5rem;
-  overflow-wrap: anywhere;
-  hyphens: auto;
-  font-style:italic;
-}
+/* ===== REVIEWS STYLE ===== */
+.wdd-review {margin:auto;border-radius: 8px;background: #fff;color: #505050;max-width: 800px;padding:2.5rem;overflow-wrap: anywhere;hyphens: auto;font-style:italic;}
 .wdd-review div {padding-left: 2rem;}
-.wdd-review__author {
-  font-size: 1.6rem !important;
-  font-weight: 700;
-  margin: 0 0 .5rem;
-  font-size: clamp(1rem, 1.75vw, 1.125rem);
-}
+.wdd-review__author {font-size: 1.6rem !important;font-weight: 700;margin: 0 0 .5rem;font-size: clamp(1rem, 1.75vw, 1.125rem);}
 .uk-background-cover .content {display: grid; justify-items: baseline !important;}
 
 /**Other Frameworks inserts **/
 @media (min-width: 640px) { .uk-hidden\@s { display: none !important; } }
 @media (min-width: 960px) { .uk-hidden\@m { display: none !important; } }
 @media (min-width: 1200px) { .uk-hidden\@l { display: none !important; } }
-
 @media (max-width: 639px) { .uk-visible\@s, .woocommerce-product-gallery { display: none !important; } }
 @media (max-width: 959px) { .uk-visible\@m { display: none !important; } }
 @media (max-width: 1200px) { .uk-visible\@l { display: none !important; } }
-
 @media(min-width: 640px) {h1{font-size:3.6rem;} h2{font-size:2.8rem}}
 @media (max-width: 640px) {h1{font-size:2.5rem;} h2{font-size:1.9rem}}
-
-/* ===== Defaults ===== */
-:root{
-  --ok-dur: .8s;
-  --ok-ease: cubic-bezier(.2,.65,.2,1);
-  --ok-distance: 16px; /* slide distance */
-}
-
-/* Base (hidden) */
-.ok-anim{
-  opacity: 0;
-  will-change: opacity, transform, filter, clip-path;
-  transition:
-    opacity var(--ok-dur) var(--ok-ease),
-    transform var(--ok-dur) var(--ok-ease),
-    filter var(--ok-dur) var(--ok-ease),
-    clip-path var(--ok-dur) var(--ok-ease);
-  transition-delay: var(--ok-delay, 0s);
-}
-
-/* Visible */
-.ok-anim.visible{
-  opacity: 1;
-  transform: none;
-  filter: none;
-  clip-path: inset(0 0 0 0 round .5px);
-}
-
-/* ===== Variants (6) ===== */
-
-/* 1) Fade */
-.ok-anim.ok-fade:not(.visible){ transform: translateY(0); }
-
-/* 2) Fade Up */
-.ok-anim.ok-fade-up:not(.visible){ transform: translateY(var(--ok-distance)); }
-
-/* 3) Fade Right (enters L→R) */
-.ok-anim.ok-fade-right:not(.visible){ transform: translateX(calc(-1 * var(--ok-distance))); }
-
-/* 4) Scale In */
-.ok-anim.ok-scale-in:not(.visible){ transform: scale(.975); }
-
-/* 5) Blur In Up (use sparingly) */
-.ok-anim.ok-blur-in-up:not(.visible){
-  transform: translateY(calc(var(--ok-distance) * 0.75));
-  filter: blur(6px);
-}
-.ok-anim.ok-blur-in-up.visible{ filter: blur(0); }
-
-/* 6) Clip Reveal (horizontal mask) */
-.ok-anim.ok-clip-reveal:not(.visible){
-  clip-path: inset(0 100% 0 0 round .5px);
-  transform: translateY(0);
-}
